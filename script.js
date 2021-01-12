@@ -27,12 +27,21 @@ function validaCPF(cpf) {
             soma += numeros.charAt(11 - k) * k;
         }
 
+        resultado = soma % 11 > 2 ? 0 : 11 - (soma % 11);
+
+        if(resultado != digitos.charAt(1)) {
+            return false;
+        }
+
         return true;
     }
 }
 
-function validacao(){
+function validacao() {
     console.log('Carregando Validação');
+    document.getElementById('success').style.display = 'none';
+    document.getElementById('error').style.display = 'none';
+
     var cpf = document.getElementById('cpf_digitado').value;
     
     var resultadoValidacao = validaCPF(cpf);
